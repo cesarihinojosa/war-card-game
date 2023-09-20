@@ -1,0 +1,1 @@
+java -cp target/cs4773-hw2-1.0-SNAPSHOT.jar hw2.WarGame
