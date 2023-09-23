@@ -14,9 +14,6 @@
 //         for(int i = 0; i < 52; i++){
 //             System.out.println(deck.deckOfCards.get(i).getNameOfCard());
 //         }
-//         System.out.println("number of cards: " + deck.numofCards);
-//         System.out.println("number of suits: " + deck.numOfSuits);
-//         System.out.println("number of ranks" + deck.numOfRanks);
 //     }
     
 // }

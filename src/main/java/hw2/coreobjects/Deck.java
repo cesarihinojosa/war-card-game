@@ -11,22 +11,24 @@ public class Deck {
     public List<Card> deckOfCards = new ArrayList<Card>();
     private Suit[] suits = Suit.values();
     private Rank[] ranks = Rank.values();
-    private int numOfRanks = Rank.values().length;
-    private int numOfSuits = Suit.values().length;
-    private int numofCards = Suit.values().length * Rank.values().length;
+    private int numOfSuits = suits.length;
+    private int numOfRanks = ranks.length;
+    private int numOfCardsInADeck = numOfSuits * numOfRanks;
+    private int maxFaceValue = 10;
+
     private static Deck deck = null;
 
     private Deck() {
         buildDeckOfCards();
     }
 
-    private void buildDeckOfCards() {// change to priv
+    private void buildDeckOfCards() {
         crateBlankCards();
         assignValuesToCards();
     }
 
     private void crateBlankCards() {
-        for (int i = 0; i < numofCards; i++) {
+        for (int i = 0; i < numOfCardsInADeck; i++) {
             Card card = new Card();
             deckOfCards.add(card);
         }
@@ -42,11 +44,33 @@ public class Deck {
                     deckOfCards.get(deckIndex).setFaceValue(j+1);
                 }
                 else{
-                    deckOfCards.get(deckIndex).setFaceValue(10);
+                    deckOfCards.get(deckIndex).setFaceValue(maxFaceValue);
                 }
                 deckIndex++;
             }
         }
+    }
+
+    Card removeCardFromDeck(){
+        Card card = new Card();
+        card = deckOfCards.get(deckOfCards.size() - 1);
+        deckOfCards.remove(card);
+        return card;
+    }
+
+    public void printDeckOfCards(){
+        if(getSizeOfDeckOfCards() == 0){
+            System.out.println("<< deck is empty >>");
+        }
+        else{
+            for(int i = 0; i < getSizeOfDeckOfCards(); i++){
+                System.out.println(deckOfCards.get(i).getNameOfCard());
+            }
+        }
+    }
+
+    public int getSizeOfDeckOfCards(){
+        return deckOfCards.size();
     }
 
     public static Deck getInstance() {
