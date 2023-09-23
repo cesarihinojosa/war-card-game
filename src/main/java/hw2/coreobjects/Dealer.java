@@ -1,7 +1,9 @@
 package hw2.coreobjects;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class Dealer {
 
@@ -13,7 +15,11 @@ public class Dealer {
     }
 
     public void shuffleDeck(){
-        //TODO
+        Random random = new Random();
+        for(int i = 0; i < deck.deckOfCards.size(); i++){
+            int randomInt = random.nextInt(deck.deckOfCards.size());
+            Collections.swap(deck.deckOfCards, i, randomInt);
+        }
     }
 
     public void dealCards(Player[] players, int numberOfPlayers){

@@ -2,6 +2,7 @@ package hw2;
 
 import org.junit.Test;
 
+import hw2.coreobjects.Dealer;
 import hw2.coreobjects.Deck;
 import hw2.gameversions.GameOfWar;
 import hw2.gameversions.GameOfWarVersionOne;
@@ -15,9 +16,15 @@ public class GameRoundVersionOneTest {
     public void TestPlayingRounds(){
 
         printStartingStuff();
+
+        Dealer.getInstance().shuffleDeck();
+        printDeck();
+
         gameOfWar.setupGame.setup(gameOfWar.players);
 
-        for(int i = 0; i < 20; i++){
+        printPiles();
+
+        for(int i = 0; i < 10; i++){
             int winnerIndex;
             winnerIndex = gameOfWar.gameRound.playRound(gameOfWar.players);
             printCurrentStatusRound(i+1, winnerIndex);
@@ -42,6 +49,21 @@ public class GameRoundVersionOneTest {
         System.out.println("");
     }
 
+    private void printDeck(){
+        System.out.println("Deck (after shuffling): ");
+        deck.printDeckOfCards();
+        System.out.println("");
+    }
+
+    private void printPiles(){
+        for(int i = 0; i < gameOfWar.players.length; i++){
+            System.out.println(gameOfWar.players[i].getName() +
+            " pile: ");
+            gameOfWar.players[i].printPile(gameOfWar.players[i].getPile());
+            System.out.println("");
+        }
+    }
+
     private void printCurrentStatusRound(int roundNumber, int winnerIndex){
         System.out.println("ROUND " + roundNumber);
         System.out.println("");
@@ -50,15 +72,18 @@ public class GameRoundVersionOneTest {
             "'s card: " +
             gameOfWar.players[i].getCardInPlay().getNameOfCard());
 
-            System.out.println("");
-
             System.out.println("Number of cards in " +
             gameOfWar.players[i].getName() +
-            "'s pile" + 
+            "'s pile: " + 
             gameOfWar.players[i].getPile().size());
         }
-        System.out.println("Winner: " + 
-        gameOfWar.players[winnerIndex].getName());
+        if(winnerIndex < 0){
+            System.out.println("WAR!!!!!!!!");
+        }
+        else{
+            System.out.println("Winner: " + 
+            gameOfWar.players[winnerIndex].getName());
+        }
 
         System.out.println("");
         System.out.println("END OF ROUND");

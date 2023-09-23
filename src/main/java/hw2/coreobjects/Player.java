@@ -25,11 +25,19 @@ abstract public class Player {
         this.pile = pile;
     }
 
-    public void setCardInPlay(){
+    public void playCard(){
+        Card card = new Card();
+        card = pile.get(pile.size() - 1);
+        setCardInPlay(card);
+        pile.remove(card);
     }
 
     public Card getCardInPlay(){
         return cardInPlay;
+    }
+
+    private void setCardInPlay(Card cardInPlay){
+        this.cardInPlay = cardInPlay;
     }
 
     public void printPile(List<Card> pile){
@@ -42,8 +50,5 @@ abstract public class Player {
     }
 
     public abstract void addToPile(Card card);
-
-    public void turnCardOver(Card card){
-    }
 
 }

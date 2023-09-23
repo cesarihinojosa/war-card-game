@@ -11,11 +11,10 @@ public class Deck {
     public List<Card> deckOfCards = new ArrayList<Card>();
     private Suit[] suits = Suit.values();
     private Rank[] ranks = Rank.values();
-    private int numOfSuits = suits.length;
-    private int numOfRanks = ranks.length;
-    private int numOfCardsInADeck = numOfSuits * numOfRanks;
-    private int maxFaceValue = 10;
-
+    private final int numOfSuits = suits.length;
+    private final int numOfRanks = ranks.length;
+    private final int numOfCardsInADeck = numOfSuits * numOfRanks;
+    private final int faceCardValue = 10;
     private static Deck deck = null;
 
     private Deck() {
@@ -44,7 +43,7 @@ public class Deck {
                     deckOfCards.get(deckIndex).setFaceValue(j+1);
                 }
                 else{
-                    deckOfCards.get(deckIndex).setFaceValue(maxFaceValue);
+                    deckOfCards.get(deckIndex).setFaceValue(faceCardValue);
                 }
                 deckIndex++;
             }
