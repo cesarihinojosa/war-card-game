@@ -1,11 +1,13 @@
 package hw2.gamecomponents;
 
+import hw2.coreobjects.Player;
+
 public class GameRoundVersionOne implements GameRound{
 
     @Override
-    public void playRound() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'playRound'");
+    public int playRound(Player[] players){
+        
+        return 0;
     }
     
 }

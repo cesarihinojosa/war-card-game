@@ -10,7 +10,7 @@ public class PlayGame {
         GameOfWar gameOfWar = new GameOfWarVersionOne();
         gameOfWar.setupGame.setup(gameOfWar.players);
         //in loop
-        gameOfWar.gameRound.playRound();
+        //gameOfWar.gameRound.playRound();
         //in loop
         gameOfWar.pointSystem.countPoints();
     }

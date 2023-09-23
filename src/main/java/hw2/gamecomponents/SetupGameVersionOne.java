@@ -8,8 +8,8 @@ public class SetupGameVersionOne implements SetupGame{
     @Override
     public void setup(Player[] players) {
         Dealer dealer = Dealer.getInstance();
-        dealer.shuffleDeck();
-        //dealer.dealCards();
+        //dealer.shuffleDeck();
+        dealer.dealCards(players, players.length);
     }
     
 }

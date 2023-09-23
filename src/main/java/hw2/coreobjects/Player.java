@@ -7,6 +7,7 @@ abstract public class Player {
     
     String name;
     List<Card> pile;
+    Card cardInPlay;
 
     public void createPile(){
         pile = new ArrayList<Card>();
@@ -24,7 +25,17 @@ abstract public class Player {
         this.pile = pile;
     }
 
+    public void setCardInPlay(){
+    }
+
+    public Card getCardInPlay(){
+        return cardInPlay;
+    }
+
     public void printPile(List<Card> pile){
+        if(pile.size() == 0){
+            System.out.println("<<pile is empty>>");
+        }
         for(int i = 0; i < pile.size(); i++){
             System.out.println(pile.get(i).getNameOfCard());
         }
