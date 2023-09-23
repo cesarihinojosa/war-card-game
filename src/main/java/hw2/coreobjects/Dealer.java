@@ -5,21 +5,15 @@ import java.util.List;
 
 public class Dealer {
 
-    private static Dealer dealer = null;
     private Deck deck;
+    private static Dealer dealer = null;
 
     private Dealer(){
         deck = Deck.getInstance();
     }
 
-    public static Dealer getInstance(){
-        if (dealer == null) {
-            dealer = new Dealer();
-        }
-        return dealer;
-    }
-
     public void shuffleDeck(){
+        //TODO
     }
 
     public void dealCards(Player[] players, int numberOfPlayers){
@@ -52,6 +46,13 @@ public class Dealer {
                 deck.removeCardFromDeck();
             }
         }
+    }
+
+    public static Dealer getInstance(){
+        if (dealer == null) {
+            dealer = new Dealer();
+        }
+        return dealer;
     }
 
 }

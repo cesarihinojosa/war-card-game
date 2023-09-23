@@ -23,11 +23,11 @@ public class Deck {
     }
 
     private void buildDeckOfCards() {
-        crateBlankCards();
+        createBlankCards();
         assignValuesToCards();
     }
 
-    private void crateBlankCards() {
+    private void createBlankCards() {
         for (int i = 0; i < numOfCardsInADeck; i++) {
             Card card = new Card();
             deckOfCards.add(card);

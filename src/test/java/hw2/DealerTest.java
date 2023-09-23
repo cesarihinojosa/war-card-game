@@ -5,6 +5,7 @@ import org.junit.Test;
 import hw2.coreobjects.Dealer;
 import hw2.coreobjects.Deck;
 import hw2.coreobjects.Player;
+import hw2.coreobjects.PlayerVersionOne;
 
 public class DealerTest {
 
@@ -36,7 +37,7 @@ public class DealerTest {
     private Player[] assignPlayersArray(int numOfPlayers){
         Player[] players = new Player[numOfPlayers];
         for(int i = 0; i < numOfPlayers; i++){
-            Player player = new Player(
+            Player player = new PlayerVersionOne(
                 (new StringBuilder())
                 .append("Player ")
                 .append(i+1)
@@ -56,7 +57,7 @@ public class DealerTest {
         for(int i = 0; i < numOfPlayers; i++){
             System.out.println("--------" + players[i].getName() 
             + " CARDS--------");
-            players[i].printPile();
+            players[i].printPile(players[i].getPile());
             System.out.println("");
             System.out.println("Number of cards in pile: " + 
             players[i].getPile().size());

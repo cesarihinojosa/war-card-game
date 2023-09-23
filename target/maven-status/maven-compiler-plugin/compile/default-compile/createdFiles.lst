@@ -7,6 +7,7 @@ hw2/gamecomponents/PointSystemVersionOne.class
 hw2/coreobjects/Card.class
 hw2/coreobjects/Card$Rank.class
 hw2/coreobjects/Dealer.class
+hw2/coreobjects/PlayerVersionOne.class
 hw2/gamecomponents/WarRoundVersionOne.class
 hw2/gamecomponents/PointSystem.class
 hw2/gamecomponents/GameRound.class
