@@ -59,14 +59,14 @@ public class GameRoundVersionOne implements GameRound{
 
     private void clearCardsInPlay(Player[] players){
         for(int i = 0; i < players.length; i++){
-            players[i].setCardInPlay(null);
+            players[i].clearCardsInPlay();
         }
     }
 
     private void giveCardsToWinner(Player[] players, int indexOfWinner){
         for(int i = 0; i < players.length; i++){
             players[indexOfWinner].getPile().add(players[i].getCardInPlay());
-            players[i].setCardInPlay(null);
+            players[i].clearCardsInPlay();
         }
     }
     

@@ -7,11 +7,12 @@ abstract public class Player {
     
     String name;
     public List<Card> pile;
-    Card cardInPlay;
+    List<Card> cardsInPlay;
     Card previousCardInPlay;
 
     public void createPile(){
         pile = new ArrayList<Card>();
+        cardsInPlay = new ArrayList<Card>();
     }
 
     public String getName(){
@@ -34,12 +35,16 @@ abstract public class Player {
     }
 
     public Card getCardInPlay(){
-        return cardInPlay;
+        return cardsInPlay.get(cardsInPlay.size() - 1);
     }
 
     public void setCardInPlay(Card cardInPlay){
-        setPreviousCardInPlay(this.cardInPlay);
-        this.cardInPlay = cardInPlay;
+        cardsInPlay.add(cardInPlay);
+    }
+
+    public void clearCardsInPlay(){
+        setPreviousCardInPlay(cardsInPlay.get(cardsInPlay.size() - 1));
+        cardsInPlay.clear();
     }
 
     public Card getPreviousCardInPlay(){
