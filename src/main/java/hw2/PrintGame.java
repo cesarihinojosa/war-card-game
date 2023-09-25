@@ -5,12 +5,20 @@ import hw2.gameversions.GameOfWar;
 public class PrintGame {
 
     public void printCurrentStatus(GameOfWar gameOfWar, int indexOfWinner) {
+        System.out.println();
         for (int i = 0; i < gameOfWar.players.length; i++) {
             System.out.println(gameOfWar.players[i].getName() +
-                    "plays " + gameOfWar.players[i].getPreviousCardInPlay());
+                    " plays " + 
+                    gameOfWar.players[i].getPreviousCardInPlay().getNameOfCard());
+            
         }
-        System.out.println(gameOfWar.players[indexOfWinner] +
-                "wins the round");
+        if(indexOfWinner < 0){
+            System.out.println("****WAR****");
+        }
+        else{
+            System.out.println(gameOfWar.players[indexOfWinner].getName() +
+                " wins the round");
+        }
     }
 
 }
