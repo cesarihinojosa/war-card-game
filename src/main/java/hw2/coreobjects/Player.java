@@ -6,7 +6,7 @@ import java.util.List;
 abstract public class Player {
     
     String name;
-    List<Card> pile;
+    public List<Card> pile;
     Card cardInPlay;
     Card previousCardInPlay;
 
@@ -48,15 +48,6 @@ abstract public class Player {
 
     public void setPreviousCardInPlay(Card previousCardInPlay){
         this.previousCardInPlay = previousCardInPlay;
-    }
-
-    public void printPile(List<Card> pile){
-        if(pile.size() == 0){
-            System.out.println("<<pile is empty>>");
-        }
-        for(int i = 0; i < pile.size(); i++){
-            System.out.println(pile.get(i).getNameOfCard());
-        }
     }
 
     public abstract void addToPile(Card card);

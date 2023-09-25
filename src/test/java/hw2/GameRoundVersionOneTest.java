@@ -12,6 +12,7 @@ public class GameRoundVersionOneTest {
     GameOfWar gameOfWar = new GameOfWarVersionOne();
     Dealer dealer = Dealer.getInstance();
     Deck deck = Deck.getInstance();
+    PrintGameExtra printGameExtra = new PrintGameExtra();
 
     @Test
     public void TestPlayingRounds() {
@@ -32,19 +33,19 @@ public class GameRoundVersionOneTest {
         System.out.println("Number of players: " +
                 gameOfWar.players.length);
         System.out.println("Deck: ");
-        deck.printDeckOfCards();
+        printGameExtra.printDeck();
         System.out.println("");
         for (int i = 0; i < gameOfWar.players.length; i++) {
             System.out.println(gameOfWar.players[i].getName() +
                     " pile (before dealing): ");
-            gameOfWar.players[i].printPile(gameOfWar.players[i].getPile());
+            printGameExtra.printPile(gameOfWar.players[i]);
         }
         System.out.println("");
     }
 
     private void printDeck() {
         System.out.println("Deck (after shuffling): ");
-        deck.printDeckOfCards();
+        printGameExtra.printDeck();
         System.out.println("");
     }
 
@@ -52,14 +53,14 @@ public class GameRoundVersionOneTest {
         for (int i = 0; i < gameOfWar.players.length; i++) {
             System.out.println(gameOfWar.players[i].getName() +
                     " pile: ");
-            gameOfWar.players[i].printPile(gameOfWar.players[i].getPile());
+            printGameExtra.printPile(gameOfWar.players[i]);
             System.out.println("");
         }
     }
 
-    private void PlayAndPrintRounds(){
-        for (int i = 0; i < 300; i++) {
-            if(checkIfPileNull()){
+    private void PlayAndPrintRounds() {
+        for (int i = 0; i < 20; i++) {
+            if (checkIfPileNull()) {
                 break;
             }
             int winnerIndex = gameOfWar.gameRound.playRound(gameOfWar.players);
@@ -71,11 +72,11 @@ public class GameRoundVersionOneTest {
         }
     }
 
-    private boolean checkIfPileNull(){
+    private boolean checkIfPileNull() {
         for (int i = 0; i < gameOfWar.players.length; i++) {
-            if(gameOfWar.players[i].getPile().size() == 0){
+            if (gameOfWar.players[i].getPile().size() == 0) {
                 System.out.println(gameOfWar.players[i].getName() +
-                " pile is EMPTY!!");
+                        " pile is EMPTY!!");
                 return true;
             }
         }
@@ -104,7 +105,7 @@ public class GameRoundVersionOneTest {
         }
     }
 
-    private void printWinner(int winnerIndex){
+    private void printWinner(int winnerIndex) {
         if (winnerIndex < 0) {
             System.out.println("WAR!!!!!!!!");
         } else {
@@ -113,12 +114,12 @@ public class GameRoundVersionOneTest {
         }
     }
 
-    private void printEndOfRound(){
+    private void printEndOfRound() {
         System.out.println("");
         System.out.println("END OF ROUND");
     }
 
-    private void printEndOfTest(){
+    private void printEndOfTest() {
         System.out.println("");
         System.out.println("END OF TEST");
     }

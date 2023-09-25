@@ -11,6 +11,7 @@ hw2/coreobjects/PlayerVersionOne.class
 hw2/gamecomponents/WarRoundVersionOne.class
 hw2/gamecomponents/PointSystem.class
 hw2/gamecomponents/GameRound.class
+hw2/PrintGame.class
 hw2/gamecomponents/SetupGame.class
 hw2/PlayGame.class
 hw2/gamecomponents/WarRound.class

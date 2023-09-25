@@ -60,17 +60,6 @@ public class Deck {
         return card;
     }
 
-    public void printDeckOfCards(){
-        if(getSizeOfDeckOfCards() == 0){
-            System.out.println("<< deck is empty >>");
-        }
-        else{
-            for(int i = 0; i < getSizeOfDeckOfCards(); i++){
-                System.out.println(deckOfCards.get(i).getNameOfCard());
-            }
-        }
-    }
-
     public int getSizeOfDeckOfCards(){
         return deckOfCards.size();
     }
