@@ -9,7 +9,6 @@ public class Card {
         club
     }
     public enum Rank {
-        ace,
         two,
         three,
         four,
@@ -22,6 +21,7 @@ public class Card {
         jack,
         queen,
         king,
+        ace
     }
     private Suit suit;
     private Rank rank;

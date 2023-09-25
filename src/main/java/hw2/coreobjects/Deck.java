@@ -39,8 +39,11 @@ public class Deck {
             for(int j = 0; j < numOfRanks; j++){
                 deckOfCards.get(deckIndex).setSuit(suits[i]);
                 deckOfCards.get(deckIndex).setRank(ranks[j]);
-                if(j < 10){
-                    deckOfCards.get(deckIndex).setFaceValue(j+1);
+                if(j < 9){
+                    deckOfCards.get(deckIndex).setFaceValue(j+2);
+                }
+                else if(j == 12){
+                    deckOfCards.get(deckIndex).setFaceValue(11);
                 }
                 else{
                     deckOfCards.get(deckIndex).setFaceValue(faceCardValue);

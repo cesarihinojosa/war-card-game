@@ -8,6 +8,7 @@ abstract public class Player {
     String name;
     List<Card> pile;
     Card cardInPlay;
+    Card previousCardInPlay;
 
     public void createPile(){
         pile = new ArrayList<Card>();
@@ -36,8 +37,17 @@ abstract public class Player {
         return cardInPlay;
     }
 
-    private void setCardInPlay(Card cardInPlay){
+    public void setCardInPlay(Card cardInPlay){
+        setPreviousCardInPlay(this.cardInPlay);
         this.cardInPlay = cardInPlay;
+    }
+
+    public Card getPreviousCardInPlay(){
+        return previousCardInPlay;
+    }
+
+    public void setPreviousCardInPlay(Card previousCardInPlay){
+        this.previousCardInPlay = previousCardInPlay;
     }
 
     public void printPile(List<Card> pile){

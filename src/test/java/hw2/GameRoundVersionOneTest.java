@@ -10,83 +10,117 @@ import hw2.gameversions.GameOfWarVersionOne;
 public class GameRoundVersionOneTest {
 
     GameOfWar gameOfWar = new GameOfWarVersionOne();
+    Dealer dealer = Dealer.getInstance();
     Deck deck = Deck.getInstance();
 
     @Test
-    public void TestPlayingRounds(){
-
+    public void TestPlayingRounds() {
         printStartingStuff();
-
-        Dealer.getInstance().shuffleDeck();
+        dealer.shuffleDeck();
         printDeck();
-
         gameOfWar.setupGame.setup(gameOfWar.players);
-
         printPiles();
-
-        for(int i = 0; i < 10; i++){
-            int winnerIndex;
-            winnerIndex = gameOfWar.gameRound.playRound(gameOfWar.players);
-            printCurrentStatusRound(i+1, winnerIndex);
-        }
+        PlayAndPrintRounds();
+        printEndOfTest();
     }
 
-    private void printStartingStuff(){
+    private void printStartingStuff() {
         System.out.println("TEST BEGINS");
         System.out.println("\n");
         System.out.println("--------------GAME OF WAR--------------");
         System.out.println("");
-        System.out.println("Number of players: " + 
-        gameOfWar.players.length);
+        System.out.println("Number of players: " +
+                gameOfWar.players.length);
         System.out.println("Deck: ");
         deck.printDeckOfCards();
         System.out.println("");
-        for(int i = 0; i < gameOfWar.players.length; i++){
+        for (int i = 0; i < gameOfWar.players.length; i++) {
             System.out.println(gameOfWar.players[i].getName() +
-            " pile (before dealing): ");
+                    " pile (before dealing): ");
             gameOfWar.players[i].printPile(gameOfWar.players[i].getPile());
         }
         System.out.println("");
     }
 
-    private void printDeck(){
+    private void printDeck() {
         System.out.println("Deck (after shuffling): ");
         deck.printDeckOfCards();
         System.out.println("");
     }
 
-    private void printPiles(){
-        for(int i = 0; i < gameOfWar.players.length; i++){
+    private void printPiles() {
+        for (int i = 0; i < gameOfWar.players.length; i++) {
             System.out.println(gameOfWar.players[i].getName() +
-            " pile: ");
+                    " pile: ");
             gameOfWar.players[i].printPile(gameOfWar.players[i].getPile());
             System.out.println("");
         }
     }
 
-    private void printCurrentStatusRound(int roundNumber, int winnerIndex){
+    private void PlayAndPrintRounds(){
+        for (int i = 0; i < 300; i++) {
+            if(checkIfPileNull()){
+                break;
+            }
+            int winnerIndex = gameOfWar.gameRound.playRound(gameOfWar.players);
+            printStartOfRound(i + 1);
+            printCardsInPlay(i + 1, winnerIndex);
+            printWinner(winnerIndex);
+            printPileAmount();
+            printEndOfRound();
+        }
+    }
+
+    private boolean checkIfPileNull(){
+        for (int i = 0; i < gameOfWar.players.length; i++) {
+            if(gameOfWar.players[i].getPile().size() == 0){
+                System.out.println(gameOfWar.players[i].getName() +
+                " pile is EMPTY!!");
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void printStartOfRound(int roundNumber) {
         System.out.println("ROUND " + roundNumber);
         System.out.println("");
-        for(int i = 0; i < gameOfWar.players.length; i++){
+    }
+
+    private void printCardsInPlay(int roundNumber, int winnerIndex) {
+        for (int i = 0; i < gameOfWar.players.length; i++) {
             System.out.println(gameOfWar.players[i].getName() +
-            "'s card: " +
-            gameOfWar.players[i].getCardInPlay().getNameOfCard());
+                    "'s card: " +
+                    gameOfWar.players[i].getPreviousCardInPlay().getNameOfCard());
+        }
+    }
 
+    private void printPileAmount() {
+        for (int i = 0; i < gameOfWar.players.length; i++) {
             System.out.println("Number of cards in " +
-            gameOfWar.players[i].getName() +
-            "'s pile: " + 
-            gameOfWar.players[i].getPile().size());
+                    gameOfWar.players[i].getName() +
+                    "'s pile: " +
+                    gameOfWar.players[i].getPile().size());
         }
-        if(winnerIndex < 0){
-            System.out.println("WAR!!!!!!!!");
-        }
-        else{
-            System.out.println("Winner: " + 
-            gameOfWar.players[winnerIndex].getName());
-        }
+    }
 
+    private void printWinner(int winnerIndex){
+        if (winnerIndex < 0) {
+            System.out.println("WAR!!!!!!!!");
+        } else {
+            System.out.println("Winner: " +
+                    gameOfWar.players[winnerIndex].getName());
+        }
+    }
+
+    private void printEndOfRound(){
         System.out.println("");
         System.out.println("END OF ROUND");
+    }
+
+    private void printEndOfTest(){
+        System.out.println("");
+        System.out.println("END OF TEST");
     }
 
 }
