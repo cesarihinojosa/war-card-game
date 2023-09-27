@@ -15,7 +15,7 @@ public class GameTest {
 
     @Test
     public void TestPlayingRounds() {
-        int numberOfRounds = 40;
+        int numberOfRounds = 1000;
         printGameExtra.printTestStart();
         printGameExtra.printDeck();
 
@@ -26,15 +26,19 @@ public class GameTest {
         printGameExtra.printPlayersDetail(gameOfWar.players);
 
         for(int i = 0; i < numberOfRounds; i++){
+            System.out.println();
+            System.out.print("Round #" + i);
             Player winner = new PlayerVersionOne("Winner");
             winner = gameOfWar.gameRound.playRound(gameOfWar.players);
             printGame.printCurrentStatus(gameOfWar, winner);
             printGameExtra.printPlayersDetail(gameOfWar.players);
-
             if(winner == null){
                 winner = gameOfWar.warRound.war(gameOfWar.players);
                 printGame.printCurrentStatus(gameOfWar, winner);
                 printGameExtra.printPlayersDetail(gameOfWar.players);
+            }
+            if(gameOfWar.pointSystem.gameEnded(gameOfWar.players, winner)){
+                break;
             }
         }
     }

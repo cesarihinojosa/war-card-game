@@ -1,7 +1,9 @@
 package hw2.gamecomponents;
 
+import hw2.coreobjects.Player;
+
 public interface PointSystem {
     
-    public void countPoints();
+    public boolean gameEnded(Player[] players, Player winner);
 
 }
