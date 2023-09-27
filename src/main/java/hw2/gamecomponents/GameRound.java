@@ -4,6 +4,6 @@ import hw2.coreobjects.Player;
 
 public interface GameRound {
 
-    public int playRound(Player[] players);
+    public Player playRound(Player[] players);
 
 }

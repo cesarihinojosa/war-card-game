@@ -1,23 +1,28 @@
 package hw2.gamecomponents;
 
+import hw2.coreobjects.Dealer;
 import hw2.coreobjects.Player;
+import hw2.coreobjects.PlayerVersionOne;
 
 public class GameRoundVersionOne implements GameRound{
 
+    Dealer dealer = Dealer.getInstance();
+
     @Override
-    public int playRound(Player[] players){
+    public Player playRound(Player[] players){
         playCards(players);
-        int highestCard = determineHighestCard(players);
-        int indexOfWinner = determineWinner(players, highestCard);
-        int numberOfWinners = countNumberOfWinners(players, highestCard);
+        int highestCard = dealer.determineHighestCard(players);
+        Player winner = new PlayerVersionOne("Winner");
+        winner = dealer.determineWinner(players, highestCard);
+        int numberOfWinners = dealer.countNumberOfWinners(players, highestCard);
     
         if(numberOfWinners > 1){ //war
             clearCardsInPlay(players);
-            return -1;
+            return null;
         }
         else{
-            giveCardsToWinner(players, indexOfWinner);
-            return indexOfWinner;
+            giveCardsToWinner(players, winner);
+            return winner;
         }
     }
 
@@ -27,45 +32,15 @@ public class GameRoundVersionOne implements GameRound{
         }
     }
 
-    private int determineHighestCard(Player[] players){
-        int highestCard = 0;
-        for(int i = 0; i < players.length; i++){
-            if(players[i].getCardInPlay().getFaceValue() > highestCard){
-                highestCard = players[i].getCardInPlay().getFaceValue();
-            }
-        }
-        return highestCard;
-    }
-
-    private int determineWinner(Player[] players, int highestCard){
-        int indexOfWinner = -5;
-        for(int i = 0; i < players.length; i++){
-            if(highestCard == players[i].getCardInPlay().getFaceValue()){
-                indexOfWinner = i;
-            }
-        }
-        return indexOfWinner;
-    }
-
-    private int countNumberOfWinners(Player[] players, int highestCard){
-        int numberOfWinners = 0;
-        for(int i = 0; i < players.length; i++){
-            if(highestCard == players[i].getCardInPlay().getFaceValue()){
-                numberOfWinners++;
-            }
-        }
-        return numberOfWinners;
-    }
-
     private void clearCardsInPlay(Player[] players){
         for(int i = 0; i < players.length; i++){
             players[i].clearCardsInPlay();
         }
     }
 
-    private void giveCardsToWinner(Player[] players, int indexOfWinner){
+    private void giveCardsToWinner(Player[] players, Player winner){
         for(int i = 0; i < players.length; i++){
-            players[indexOfWinner].getPile().add(players[i].getCardInPlay());
+            winner.addCardToBottomOfPile(players[i].getCardInPlay());
             players[i].clearCardsInPlay();
         }
     }

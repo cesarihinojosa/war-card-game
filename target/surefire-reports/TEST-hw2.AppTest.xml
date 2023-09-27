@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="hw2.AppTest" time="0.024" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="hw2.AppTest" time="0.04" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="20"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-20.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/Cesar/Desktop/Fall23/OOS/java-workspace/hw2-github-v2/oos-assignment2/target/surefire/surefirebooter9177686845868603474.jar /Users/Cesar/Desktop/Fall23/OOS/java-workspace/hw2-github-v2/oos-assignment2/target/surefire 2023-09-27T12-48-33_371-jvmRun1 surefire7666376983520192141tmp surefire_05562162701605522824tmp"/>
+    <property name="sun.java.command" value="/Users/Cesar/Desktop/Fall23/OOS/java-workspace/hw2-github-v2/oos-assignment2/target/surefire/surefirebooter14813692378911385823.jar /Users/Cesar/Desktop/Fall23/OOS/java-workspace/hw2-github-v2/oos-assignment2/target/surefire 2023-09-27T14-04-48_876-jvmRun1 surefire18112095662386456425tmp surefire_0824922979820384001tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/Cesar/Desktop/Fall23/OOS/java-workspace/hw2-github-v2/oos-assignment2/target/test-classes:/Users/Cesar/Desktop/Fall23/OOS/java-workspace/hw2-github-v2/oos-assignment2/target/classes:/Users/Cesar/.m2/repository/junit/junit/4.11/junit-4.11.jar:/Users/Cesar/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
@@ -29,7 +29,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/Cesar/Desktop/Fall23/OOS/java-workspace/hw2-github-v2/oos-assignment2/target/surefire/surefirebooter9177686845868603474.jar"/>
+    <property name="surefire.real.class.path" value="/Users/Cesar/Desktop/Fall23/OOS/java-workspace/hw2-github-v2/oos-assignment2/target/surefire/surefirebooter14813692378911385823.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="20.0.2+9-78"/>
@@ -57,5 +57,5 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="64.0"/>
   </properties>
-  <testcase name="shouldAnswerWithTrue" classname="hw2.AppTest" time="0.003"/>
+  <testcase name="shouldAnswerWithTrue" classname="hw2.AppTest" time="0.004"/>
 </testsuite>

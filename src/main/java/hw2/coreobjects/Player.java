@@ -23,8 +23,12 @@ abstract public class Player {
         cardsInPlay.clear();
     }
 
-    public void addCardsToPile(List<Card> cardsWon){
-        pile.addAll(cardsWon);
+    public void addCardToBottomOfPile(Card card){
+        pile.add(0, card);
+    }
+
+    public void addAllCardsToBottomOfPile(List<Card> cardsWon){
+        pile.addAll(0, cardsWon);
     }
 
     public String getName(){

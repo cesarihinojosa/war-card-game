@@ -61,4 +61,34 @@ public class Dealer {
         }
     }
 
+    public int determineHighestCard(Player[] players){
+        int highestCard = 0;
+        for(int i = 0; i < players.length; i++){
+            if(players[i].getCardInPlay().getFaceValue() > highestCard){
+                highestCard = players[i].getCardInPlay().getFaceValue();
+            }
+        }
+        return highestCard;
+    }
+
+    public int countNumberOfWinners(Player[] players, int highestCard){
+        int numberOfWinners = 0;
+        for(int i = 0; i < players.length; i++){
+            if(highestCard == players[i].getCardInPlay().getFaceValue()){
+                numberOfWinners++;
+            }
+        }
+        return numberOfWinners;
+    }
+
+    public Player determineWinner(Player[] players, int highestCard){
+        int indexOfWinner = -1;
+        for(int i = 0; i < players.length; i++){
+            if(highestCard == players[i].getCardInPlay().getFaceValue()){
+                indexOfWinner = i;
+            }
+        }
+        return players[indexOfWinner];
+    }
+
 }

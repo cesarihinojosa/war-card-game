@@ -18,15 +18,20 @@ public class GameTest {
         int numberOfRounds = 40;
         printGameExtra.printTestStart();
         printGameExtra.printDeck();
+
         gameOfWar.setupGame.setup(gameOfWar.players);
+        
         printGameExtra.printDeck();
         printGameExtra.printPiles(gameOfWar.players);
+        printGameExtra.printPlayersDetail(gameOfWar.players);
+
         for(int i = 0; i < numberOfRounds; i++){
-            int indexOfWinner = gameOfWar.gameRound.playRound(gameOfWar.players);
-            printGame.printCurrentStatus(gameOfWar, indexOfWinner);
+            Player winner = new PlayerVersionOne("Winner");
+            winner = gameOfWar.gameRound.playRound(gameOfWar.players);
+            printGame.printCurrentStatus(gameOfWar, winner);
             printGameExtra.printPlayersDetail(gameOfWar.players);
-            if(indexOfWinner < 0){
-                Player winner = new PlayerVersionOne("Winner");
+
+            if(winner == null){
                 winner = gameOfWar.warRound.war(gameOfWar.players);
                 printGame.printCurrentStatus(gameOfWar, winner);
                 printGameExtra.printPlayersDetail(gameOfWar.players);
