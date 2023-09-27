@@ -1,6 +1,5 @@
 package hw2.coreobjects;
 
-import java.util.ArrayList;
 import java.util.List;
 
 abstract public class Player {
@@ -10,9 +9,22 @@ abstract public class Player {
     List<Card> cardsInPlay;
     Card previousCardInPlay;
 
-    public void createPile(){
-        pile = new ArrayList<Card>();
-        cardsInPlay = new ArrayList<Card>();
+    public abstract void addToPile(Card card);
+
+    public void playCard(){
+        Card card = new Card();
+        card = pile.get(pile.size() - 1);
+        setCardInPlay(card);
+        pile.remove(card);
+    }
+
+    public void clearCardsInPlay(){
+        setPreviousCardInPlay(cardsInPlay.get(cardsInPlay.size() - 1));
+        cardsInPlay.clear();
+    }
+
+    public void addCardsToPile(List<Card> cardsWon){
+        pile.addAll(cardsWon);
     }
 
     public String getName(){
@@ -27,11 +39,8 @@ abstract public class Player {
         this.pile = pile;
     }
 
-    public void playCard(){
-        Card card = new Card();
-        card = pile.get(pile.size() - 1);
-        setCardInPlay(card);
-        pile.remove(card);
+    public List<Card> getAllCardsInPlay(){
+        return cardsInPlay;
     }
 
     public Card getCardInPlay(){
@@ -42,11 +51,6 @@ abstract public class Player {
         cardsInPlay.add(cardInPlay);
     }
 
-    public void clearCardsInPlay(){
-        setPreviousCardInPlay(cardsInPlay.get(cardsInPlay.size() - 1));
-        cardsInPlay.clear();
-    }
-
     public Card getPreviousCardInPlay(){
         return previousCardInPlay;
     }
@@ -54,7 +58,5 @@ abstract public class Player {
     public void setPreviousCardInPlay(Card previousCardInPlay){
         this.previousCardInPlay = previousCardInPlay;
     }
-
-    public abstract void addToPile(Card card);
 
 }

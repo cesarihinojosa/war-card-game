@@ -10,6 +10,13 @@ public class Dealer {
     private Deck deck;
     private static Dealer dealer = null;
 
+    public static Dealer getInstance(){
+        if (dealer == null) {
+            dealer = new Dealer();
+        }
+        return dealer;
+    }
+
     private Dealer(){
         deck = Deck.getInstance();
     }
@@ -52,13 +59,6 @@ public class Dealer {
                 deck.removeCardFromDeck();
             }
         }
-    }
-
-    public static Dealer getInstance(){
-        if (dealer == null) {
-            dealer = new Dealer();
-        }
-        return dealer;
     }
 
 }

@@ -17,6 +17,13 @@ public class Deck {
     private final int faceCardValue = 10;
     private static Deck deck = null;
 
+    public static Deck getInstance() {
+        if (deck == null) {
+            deck = new Deck();
+        }
+        return deck;
+    }
+
     private Deck() {
         buildDeckOfCards();
     }
@@ -62,13 +69,6 @@ public class Deck {
 
     public int getSizeOfDeckOfCards(){
         return deckOfCards.size();
-    }
-
-    public static Deck getInstance() {
-        if (deck == null) {
-            deck = new Deck();
-        }
-        return deck;
     }
 
 }

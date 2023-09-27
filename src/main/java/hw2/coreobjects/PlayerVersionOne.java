@@ -1,10 +1,13 @@
 package hw2.coreobjects;
 
+import java.util.ArrayList;
+
 public class PlayerVersionOne extends Player{
 
     public PlayerVersionOne(String name){
         this.name = name;
-        createPile();
+        pile = new ArrayList<Card>();
+        cardsInPlay = new ArrayList<Card>();
     }
 
     @Override

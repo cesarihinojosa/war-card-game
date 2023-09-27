@@ -2,6 +2,8 @@ package hw2;
 
 import org.junit.Test;
 
+import hw2.coreobjects.Player;
+import hw2.coreobjects.PlayerVersionOne;
 import hw2.gameversions.GameOfWar;
 import hw2.gameversions.GameOfWarVersionOne;
 
@@ -13,7 +15,7 @@ public class GameTest {
 
     @Test
     public void TestPlayingRounds() {
-        int numberOfRounds = 20;
+        int numberOfRounds = 40;
         printGameExtra.printTestStart();
         printGameExtra.printDeck();
         gameOfWar.setupGame.setup(gameOfWar.players);
@@ -23,6 +25,12 @@ public class GameTest {
             int indexOfWinner = gameOfWar.gameRound.playRound(gameOfWar.players);
             printGame.printCurrentStatus(gameOfWar, indexOfWinner);
             printGameExtra.printPlayersDetail(gameOfWar.players);
+            if(indexOfWinner < 0){
+                Player winner = new PlayerVersionOne("Winner");
+                winner = gameOfWar.warRound.war(gameOfWar.players);
+                printGame.printCurrentStatus(gameOfWar, winner);
+                printGameExtra.printPlayersDetail(gameOfWar.players);
+            }
         }
     }
 
