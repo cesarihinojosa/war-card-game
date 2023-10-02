@@ -2,40 +2,55 @@ package hw2.gamecomponents;
 
 import hw2.coreobjects.Player;
 
-public class PointSystemVersionOne implements PointSystem{
+public class PointSystemVersionOne implements PointSystem {
 
-    @Override
-    public void setPoints(Player[] players){
-        for(int i = 0; i < players.length; i++){
-            players[i].setPoints(players[i].getPile().size());
-        }
-    }
+    final int NUMBER_OF_PLAYERS = 2;
 
     @Override
     public boolean gameEnded(Player[] players, Player winner) {
-        if(checkIfPlayerHasWon(players) || checkIfGameEndedInTie(winner)){
+        if (checkIfPlayerHasWon(players) || checkIfGameEndedInTie(winner)) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
 
-    private boolean checkIfPlayerHasWon(Player[] players){
-        for(int i = 0; i < players.length; i++){
-            if(players[i].getPoints() == 52){
-                System.out.println(players[i].getName() + " WON!");
+    private boolean checkIfPlayerHasWon(Player[] players) {
+        for (int i = 0; i < players.length; i++) {
+            if (players[i].getPoints() == 52) {
                 return true;
             }
         }
         return false;
     }
 
-    private boolean checkIfGameEndedInTie(Player winner){
-        if(winner == null){
+    private boolean checkIfGameEndedInTie(Player winner) {
+        if (winner == null) {
             return true;
         }
         return false;
     }
-    
+
+    @Override
+    public Player determineWinner(Player[] players) {
+        Player winner = null;
+        winner = determinePlayerWithHighestPoints(players);
+        return winner;
+    }
+
+    private Player determinePlayerWithHighestPoints(Player[] players){
+        int maxPoints = 0;
+        Player winner = null;
+        for(int i = 0; i < NUMBER_OF_PLAYERS; i++){
+            if(players[i].getPoints() > maxPoints){
+                maxPoints = players[i].getPoints();
+                winner = players[i];
+            }
+            else if(players[i].getPoints() == maxPoints && maxPoints != 0){
+                winner =  null;
+            }
+        }
+        return winner;
+    }
+
 }

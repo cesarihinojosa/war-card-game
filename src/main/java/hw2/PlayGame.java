@@ -7,7 +7,7 @@ import hw2.gameversions.GameOfWarVersionOne;
 
 public class PlayGame {
 
-    static int numOfRounds = 400;// TODO: change this to depend on the command arguments
+    static int numOfRounds = 2;// TODO: change this to depend on the command arguments
     static GameOfWar gameOfWar = new GameOfWarVersionOne();
     static PrintGame printGame = new PrintGame();
 
@@ -20,10 +20,12 @@ public class PlayGame {
                 winner = playWar();
             }
             printStatus(winner);
-            setPoints();
             printScore();
-            checkIfGameEnded(winner);
+            if(gameEnded(winner)){
+                break;
+            }
         }
+        declareWinner();
     }
 
     private static void setupGame(){
@@ -47,14 +49,19 @@ public class PlayGame {
         printGame.printCurrentStatusNormal(gameOfWar, winner);
     }
 
-    private static void checkIfGameEnded(Player winner){
-        if(gameOfWar.pointSystem.gameEnded(gameOfWar.players, winner)){
-            System.exit(0);
-        }
+    private static boolean gameEnded(Player winner){
+        return gameOfWar.pointSystem.gameEnded(gameOfWar.players, winner);
     }
 
-    private static void setPoints(){
-        gameOfWar.pointSystem.setPoints(gameOfWar.players);
+    private static void declareWinner(){
+        Player winner = gameOfWar.pointSystem.determineWinner(gameOfWar.players);
+        if(winner != null){
+            System.out.println(winner.getName() + " wins!");
+        }
+        else{
+            System.out.println("tie!");
+        }
+        System.exit(0);
     }
 
     private static void printScore(){

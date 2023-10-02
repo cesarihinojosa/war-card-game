@@ -31,4 +31,11 @@ public class PlayerVersionTwo extends Player {
         pointsPile.addAll(cardsWon);
     }
 
+    @Override
+    public int getPoints() {
+        return pointsPile.size();
+    }
+
+
+
 }

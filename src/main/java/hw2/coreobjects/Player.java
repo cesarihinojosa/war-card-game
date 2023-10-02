@@ -14,6 +14,8 @@ abstract public class Player {
 
     public abstract void addManyCardsToPile(List<Card> cardsWon);
 
+    public abstract int getPoints();
+
     public void playCard(){
         Card card = new Card();
         card = pile.get(pile.size() - 1);
@@ -60,14 +62,6 @@ abstract public class Player {
 
     public void setPreviousCardInPlay(Card previousCardInPlay){
         this.previousCardInPlay = previousCardInPlay;
-    }
-
-    public int getPoints(){
-        return points;
-    }
-
-    public void setPoints(int points){
-        this.points = points;
     }
 
 }

@@ -27,4 +27,9 @@ public class PlayerVersionOne extends Player{
     public void addManyCardsToBottomOfPile(List<Card> cardsWon){
         pile.addAll(0, cardsWon);
     }
+
+    @Override
+    public int getPoints() {
+        return pile.size();
+    }
 }

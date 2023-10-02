@@ -7,7 +7,6 @@ public class GameRoundVersionOne implements GameRound{
 
     Dealer dealer = Dealer.getInstance();
 
-
     /*
      * Can be played with n number of players. n >= 2. 
      */

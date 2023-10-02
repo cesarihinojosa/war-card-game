@@ -24,7 +24,7 @@ public class PlayGameVersionOneTest {
                 winner = playWar();
             }
             printStatus(winner);
-            setPoints();
+           // setPoints();
             printScore();
             checkIfGameEnded(winner);
             //printPiles();
@@ -58,9 +58,9 @@ public class PlayGameVersionOneTest {
         }
     }
 
-    private void setPoints() {
-        gameOfWar.pointSystem.setPoints(gameOfWar.players);
-    }
+    // private void setPoints() {
+    //     gameOfWar.pointSystem.setPoints(gameOfWar.players);
+    // }
 
     private void printScore() {
         printGame.printScore(gameOfWar.players);
