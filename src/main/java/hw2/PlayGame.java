@@ -4,11 +4,12 @@ import hw2.coreobjects.Player;
 import hw2.coreobjects.PlayerVersionOne;
 import hw2.gameversions.GameOfWar;
 import hw2.gameversions.GameOfWarVersionOne;
+import hw2.gameversions.GameOfWarVersionTwo;
 
 public class PlayGame {
 
-    static int numOfRounds = 2;// TODO: change this to depend on the command arguments
-    static GameOfWar gameOfWar = new GameOfWarVersionOne();
+    static int numOfRounds = 200;// TODO: change this to depend on the command arguments
+    static GameOfWar gameOfWar = new GameOfWarVersionTwo();
     static PrintGame printGame = new PrintGame();
 
     public static void play() {
@@ -19,12 +20,14 @@ public class PlayGame {
             if (winner == null) {
                 winner = playWar();
             }
-            printStatus(winner);
-            printScore();
             if(gameEnded(winner)){
+                printStatus(winner);
                 break;
             }
+            printStatus(winner);
+            printScore();
         }
+        printScore();
         declareWinner();
     }
 

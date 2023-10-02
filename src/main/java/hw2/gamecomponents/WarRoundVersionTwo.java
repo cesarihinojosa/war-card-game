@@ -21,9 +21,14 @@ public class WarRoundVersionTwo implements WarRound {
             winner = playRoundOfWar(players);
         } while (tie(winner) && gameEndsInTie == false);
 
-        giveCardsToWinner(players, winner);
-        clearCardsInPlay(players);
-        return winner;
+        if(winner == null){
+            return winner;
+        }
+        else{
+            giveCardsToWinner(players, winner);
+            clearCardsInPlay(players);
+            return winner;
+        }
     }
 
     private Player playRoundOfWar(Player[] players) {
@@ -61,11 +66,10 @@ public class WarRoundVersionTwo implements WarRound {
     private void checkIfplayersHaveNoMoreCards(Player[] players) {
         if (players[0].getPile().size() == 0 &&
                 players[1].getPile().size() == 0) {
-            System.out.println("TIE!!!!");
             gameEndsInTie = true;
         }
     }
-    
+
     private boolean tie(Player winner) {
         if (winner == null) {
             return true;
