@@ -2,7 +2,6 @@ package hw2.gamecomponents;
 
 import hw2.coreobjects.Dealer;
 import hw2.coreobjects.Player;
-import hw2.coreobjects.PlayerVersionOne;
 
 public class GameRoundVersionOne implements GameRound{
 
@@ -16,8 +15,7 @@ public class GameRoundVersionOne implements GameRound{
     public Player playRound(Player[] players){
         playCards(players);
         int highestCard = dealer.determineHighestCard(players);
-        Player winner = new PlayerVersionOne();
-        winner = dealer.determineWinner(players, highestCard);
+        Player winner = dealer.determineWinner(players, highestCard);
         int numberOfWinners = dealer.countNumberOfWinners(players, highestCard);
     
         if(numberOfWinners > 1){ //war
@@ -38,7 +36,7 @@ public class GameRoundVersionOne implements GameRound{
 
     private void giveCardsToWinner(Player[] players, Player winner){
         for(int i = 0; i < players.length; i++){
-            winner.addCardToBottomOfPile(players[i].getCardInPlay());
+            winner.addCardToPile(players[i].getCardInPlay());
         }
     }
 
@@ -47,7 +45,4 @@ public class GameRoundVersionOne implements GameRound{
             players[i].clearCardsInPlay();
         }
     }
-
-    
-    
 }

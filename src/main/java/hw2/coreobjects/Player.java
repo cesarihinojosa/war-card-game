@@ -5,10 +5,14 @@ import java.util.List;
 abstract public class Player {
     
     String name;
-    public List<Card> pile;
+    List<Card> pile;
     List<Card> cardsInPlay;
     Card previousCardInPlay;
     int points = 0;
+
+    public abstract void addCardToPile(Card cardWon);
+
+    public abstract void addManyCardsToPile(List<Card> cardsWon);
 
     public void playCard(){
         Card card = new Card();
@@ -20,14 +24,6 @@ abstract public class Player {
     public void clearCardsInPlay(){
         setPreviousCardInPlay(cardsInPlay.get(cardsInPlay.size() - 1));
         cardsInPlay.clear();
-    }
-
-    public void addCardToBottomOfPile(Card card){
-        pile.add(0, card);
-    }
-
-    public void addAllCardsToBottomOfPile(List<Card> cardsWon){
-        pile.addAll(0, cardsWon);
     }
 
     public String getName(){

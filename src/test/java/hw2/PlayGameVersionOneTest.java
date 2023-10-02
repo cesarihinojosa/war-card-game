@@ -27,7 +27,7 @@ public class PlayGameVersionOneTest {
             setPoints();
             printScore();
             checkIfGameEnded(winner);
-            printPiles();
+            //printPiles();
         }
     }
 
@@ -66,8 +66,8 @@ public class PlayGameVersionOneTest {
         printGame.printScore(gameOfWar.players);
     }
 
-    private void printPiles(){
-        printGameExtra.printPiles(gameOfWar.players);
-    }
+    // private void printPiles(){
+    //     printGameExtra.printPiles(gameOfWar.players);
+    // }
 
 }

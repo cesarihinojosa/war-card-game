@@ -47,18 +47,18 @@ public class PrintGameExtra {
         }
     }
 
-    public void printPiles(Player[] players) {
-        System.out.println();
-        for (int i = 0; i < players.length; i++) {
-            System.out.println(players[i].getName() + "'s pile: ");
-            if (players[i].pile.size() == 0) {
-                System.out.println("<<pile is empty>>");
-            }
-            for (int j = 0; j < players[i].pile.size(); j++) {
-                System.out.println(players[i].pile.get(j).getNameOfCard());
-            }
-            System.out.println();
-        }
-    }
+    // public void printPiles(Player[] players) {
+    //     System.out.println();
+    //     for (int i = 0; i < players.length; i++) {
+    //         System.out.println(players[i].getName() + "'s pile: ");
+    //         if (players[i].pile.size() == 0) {
+    //             System.out.println("<<pile is empty>>");
+    //         }
+    //         for (int j = 0; j < players[i].pile.size(); j++) {
+    //             System.out.println(players[i].pile.get(j).getNameOfCard());
+    //         }
+    //         System.out.println();
+    //     }
+    // }
 
 }

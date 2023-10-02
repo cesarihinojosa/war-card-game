@@ -2,7 +2,6 @@ package hw2.gamecomponents;
 
 import hw2.coreobjects.Dealer;
 import hw2.coreobjects.Player;
-import hw2.coreobjects.PlayerVersionOne;
 
 public class WarRoundVersionOne implements WarRound {
 
@@ -17,7 +16,7 @@ public class WarRoundVersionOne implements WarRound {
      */
     @Override
     public Player war(Player[] players) {
-        Player winner = new PlayerVersionOne();
+        Player winner;
         do {
             winner = playRoundOfWar(players);
         } while (tie(winner) && gameEndsInTie == false);
@@ -97,7 +96,7 @@ public class WarRoundVersionOne implements WarRound {
 
     private void giveCardsToWinner(Player[] players, Player winner) {
         for (int i = 0; i < players.length; i++) {
-            winner.addAllCardsToBottomOfPile(players[i].getAllCardsInPlay());
+            winner.addManyCardsToPile(players[i].getAllCardsInPlay());
         }
     }
 
