@@ -10,8 +10,10 @@ import hw2.gamecomponents.WarRoundVersionOne;
 public class GameOfWarVersionOne extends GameOfWar{
     
     public GameOfWarVersionOne(){
-        Player playerOne = new PlayerVersionOne("Player 1");
-        Player playerTwo = new PlayerVersionOne("Player 2");
+        Player playerOne = new PlayerVersionOne();
+        playerOne.setName("Player 1");
+        Player playerTwo = new PlayerVersionOne();
+        playerTwo.setName("Player 2");
         players = new Player[2];
         players[0] = playerOne;
         players[1] = playerTwo;

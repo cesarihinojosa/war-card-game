@@ -7,13 +7,17 @@ import hw2.coreobjects.PlayerVersionOne;
 public class WarRoundVersionOne implements WarRound {
 
     Dealer dealer = Dealer.getInstance();
+    boolean gameEndsInTie = false;
     final int NUMBER_OF_ADDITIONAL_CARDS = 3;
     final int NUMBER_OF_PLAYERS = 2;
-    boolean gameEndsInTie = false;
 
+    /*
+     * This version of WarRound is hardcoded for 2 players and
+     * 3 additional cards during the war. 
+     */
     @Override
     public Player war(Player[] players) {
-        Player winner = new PlayerVersionOne("Winner");
+        Player winner = new PlayerVersionOne();
         do {
             winner = playRoundOfWar(players);
         } while (tie(winner) && gameEndsInTie == false);
@@ -35,7 +39,6 @@ public class WarRoundVersionOne implements WarRound {
             }
             return dealer.determineWinner(players, highestCard);
         } else {//one player ran out of cards
-            System.out.println("Victory from pile size");
             return determineWinnerFromPileSize(players);
         }
     }
@@ -70,7 +73,7 @@ public class WarRoundVersionOne implements WarRound {
 
     private void checkIfplayersHaveNoMoreCards(Player[] players) {
         if (players[0].getPile().size() == 0 &&
-                players[0].getPile().size() == 0) {
+                players[1].getPile().size() == 0) {
                     System.out.println("TIE!!!!");
             gameEndsInTie = true;
         }

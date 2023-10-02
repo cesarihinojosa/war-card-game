@@ -1,17 +1,21 @@
 package hw2;
 
+import org.junit.Test;
+
 import hw2.coreobjects.Player;
 import hw2.coreobjects.PlayerVersionOne;
 import hw2.gameversions.GameOfWar;
 import hw2.gameversions.GameOfWarVersionOne;
 
-public class PlayGame {
+public class PlayGameVersionOneTest {
 
-    static int numOfRounds = 400;// TODO: change this to depend on the command arguments
-    static GameOfWar gameOfWar = new GameOfWarVersionOne();
-    static PrintGame printGame = new PrintGame();
+    int numOfRounds = 100;// TODO: change this to depend on the command arguments
+    GameOfWar gameOfWar = new GameOfWarVersionOne();
+    PrintGame printGame = new PrintGame();
+    PrintGameExtra printGameExtra = new PrintGameExtra();
 
-    public static void play() {
+    //@Test
+    public void play() {
         setupGame();
         for (int i = 0; i < numOfRounds; i++) {
             Player winner = createPlayerObject();
@@ -23,41 +27,47 @@ public class PlayGame {
             setPoints();
             printScore();
             checkIfGameEnded(winner);
+            printPiles();
         }
     }
 
-    private static void setupGame(){
+    private void setupGame() {
         gameOfWar.setupGame.setup(gameOfWar.players);
     }
 
-    private static Player createPlayerObject(){
-        return new PlayerVersionOne();//change this to be variable
+    private Player createPlayerObject() {
+        return new PlayerVersionOne();// change this to be variable
     }
 
-    private static Player playRound(){
+    private Player playRound() {
         return gameOfWar.gameRound.playRound(gameOfWar.players);
     }
 
-    private static Player playWar(){
+    private Player playWar() {
         printGame.printCurrentStatusWar(gameOfWar);
         return gameOfWar.warRound.war(gameOfWar.players);
     }
 
-    private static void printStatus(Player winner){
+    private void printStatus(Player winner) {
         printGame.printCurrentStatusNormal(gameOfWar, winner);
     }
 
-    private static void checkIfGameEnded(Player winner){
-        if(gameOfWar.pointSystem.gameEnded(gameOfWar.players, winner)){
+    private void checkIfGameEnded(Player winner) {
+        if (gameOfWar.pointSystem.gameEnded(gameOfWar.players, winner)) {
             System.exit(0);
         }
     }
 
-    private static void setPoints(){
+    private void setPoints() {
         gameOfWar.pointSystem.setPoints(gameOfWar.players);
     }
 
-    private static void printScore(){
+    private void printScore() {
         printGame.printScore(gameOfWar.players);
     }
+
+    private void printPiles(){
+        printGameExtra.printPiles(gameOfWar.players);
+    }
+
 }

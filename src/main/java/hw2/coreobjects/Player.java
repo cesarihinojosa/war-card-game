@@ -8,8 +8,7 @@ abstract public class Player {
     public List<Card> pile;
     List<Card> cardsInPlay;
     Card previousCardInPlay;
-
-    public abstract void addToPile(Card card);
+    int points = 0;
 
     public void playCard(){
         Card card = new Card();
@@ -33,6 +32,10 @@ abstract public class Player {
 
     public String getName(){
         return name;
+    }
+
+    public void setName(String name){
+        this.name = name;
     }
 
     public List<Card> getPile(){
@@ -61,6 +64,14 @@ abstract public class Player {
 
     public void setPreviousCardInPlay(Card previousCardInPlay){
         this.previousCardInPlay = previousCardInPlay;
+    }
+
+    public int getPoints(){
+        return points;
+    }
+
+    public void setPoints(int points){
+        this.points = points;
     }
 
 }

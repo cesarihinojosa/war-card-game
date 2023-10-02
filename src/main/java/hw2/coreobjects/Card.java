@@ -3,25 +3,25 @@ package hw2.coreobjects;
 public class Card {
 
     public enum Suit {
-        spades,
-        heart,
-        diamond,
-        club
+        SPADES,
+        HEART,
+        DIAMOND,
+        CLUB
     }
     public enum Rank {
-        two,
-        three,
-        four,
-        five,
-        six,
-        seven,
-        eight,
-        nine,
-        ten,
-        jack,
-        queen,
-        king,
-        ace
+        TWO,
+        THREE,
+        FOUR,
+        FIVE,
+        SIX,
+        SEVEN,
+        EIGHT,
+        NINE,
+        TEN,
+        JACK,
+        QUEEN,
+        KING,
+        ACE
     }
     private Suit suit;
     private Rank rank;

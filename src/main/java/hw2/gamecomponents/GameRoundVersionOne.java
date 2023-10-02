@@ -8,20 +8,24 @@ public class GameRoundVersionOne implements GameRound{
 
     Dealer dealer = Dealer.getInstance();
 
+
+    /*
+     * Can be played with n number of players. n >= 2. 
+     */
     @Override
     public Player playRound(Player[] players){
         playCards(players);
         int highestCard = dealer.determineHighestCard(players);
-        Player winner = new PlayerVersionOne("Winner");
+        Player winner = new PlayerVersionOne();
         winner = dealer.determineWinner(players, highestCard);
         int numberOfWinners = dealer.countNumberOfWinners(players, highestCard);
     
         if(numberOfWinners > 1){ //war
-            //clearCardsInPlay(players);
             return null;
         }
         else{
             giveCardsToWinner(players, winner);
+            clearCardsInPlay(players);
             return winner;
         }
     }
@@ -32,17 +36,18 @@ public class GameRoundVersionOne implements GameRound{
         }
     }
 
-    private void clearCardsInPlay(Player[] players){
+    private void giveCardsToWinner(Player[] players, Player winner){
         for(int i = 0; i < players.length; i++){
+            winner.addCardToBottomOfPile(players[i].getCardInPlay());
+        }
+    }
+
+    private void clearCardsInPlay(Player[] players) {// i feel should probalby be in Player
+        for (int i = 0; i < players.length; i++) {
             players[i].clearCardsInPlay();
         }
     }
 
-    private void giveCardsToWinner(Player[] players, Player winner){
-        for(int i = 0; i < players.length; i++){
-            winner.addCardToBottomOfPile(players[i].getCardInPlay());
-            players[i].clearCardsInPlay();
-        }
-    }
+    
     
 }

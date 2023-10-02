@@ -57,6 +57,7 @@ public class PrintGameExtra {
             for (int j = 0; j < players[i].pile.size(); j++) {
                 System.out.println(players[i].pile.get(j).getNameOfCard());
             }
+            System.out.println();
         }
     }
 
