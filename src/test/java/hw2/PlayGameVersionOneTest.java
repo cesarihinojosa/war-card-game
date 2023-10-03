@@ -6,15 +6,14 @@ import hw2.coreobjects.Player;
 import hw2.coreobjects.PlayerVersionOne;
 import hw2.gameversions.GameOfWar;
 import hw2.gameversions.GameOfWarVersionOne;
+import hw2.gameversions.GameOfWarVersionTwo;
 
 public class PlayGameVersionOneTest {
-
-    int numOfRounds = 100;// TODO: change this to depend on the command arguments
-    GameOfWar gameOfWar = new GameOfWarVersionOne();
+    int numOfRounds = 200;// TODO: change this to depend on the command arguments
+    GameOfWar gameOfWar = new GameOfWarVersionTwo();
     PrintGame printGame = new PrintGame();
-    PrintGameExtra printGameExtra = new PrintGameExtra();
 
-    //@Test
+    @Test
     public void play() {
         setupGame();
         for (int i = 0; i < numOfRounds; i++) {
@@ -23,12 +22,15 @@ public class PlayGameVersionOneTest {
             if (winner == null) {
                 winner = playWar();
             }
+            if (gameEnded(winner)) {
+                printStatus(winner);
+                break;
+            }
             printStatus(winner);
-           // setPoints();
             printScore();
-            checkIfGameEnded(winner);
-            //printPiles();
         }
+        printScore();
+        declareWinner();
     }
 
     private void setupGame() {
@@ -52,22 +54,21 @@ public class PlayGameVersionOneTest {
         printGame.printCurrentStatusNormal(gameOfWar, winner);
     }
 
-    private void checkIfGameEnded(Player winner) {
-        if (gameOfWar.pointSystem.gameEnded(gameOfWar.players, winner)) {
-            System.exit(0);
-        }
+    private boolean gameEnded(Player winner) {
+        return gameOfWar.pointSystem.gameEnded(gameOfWar.players, winner);
     }
 
-    // private void setPoints() {
-    //     gameOfWar.pointSystem.setPoints(gameOfWar.players);
-    // }
+    private void declareWinner() {
+        Player winner = gameOfWar.pointSystem.determineWinner(gameOfWar.players);
+        if (winner != null) {
+            System.out.println(winner.getName() + " wins!");
+        } else {
+            System.out.println("tie!");
+        }
+        //System.exit(0);
+    }
 
     private void printScore() {
         printGame.printScore(gameOfWar.players);
     }
-
-    // private void printPiles(){
-    //     printGameExtra.printPiles(gameOfWar.players);
-    // }
-
 }
