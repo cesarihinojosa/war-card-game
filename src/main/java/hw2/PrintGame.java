@@ -5,7 +5,7 @@ import hw2.gameversions.GameOfWar;
 
 public class PrintGame {
 
-    public void printCardsInPlay(GameOfWar gameOfWar) {
+    public static void printCardsInPlay(GameOfWar gameOfWar) {
         for (int i = 0; i < gameOfWar.players.length; i++) {
             System.out.println(gameOfWar.players[i].getName() +
                     " plays " +
@@ -13,7 +13,7 @@ public class PrintGame {
         }
     }
 
-    public void printCardsInPlayWar(GameOfWar gameOfWar) {
+    public static void printCardsInPlayWar(GameOfWar gameOfWar) {
         for (int i = 0; i < gameOfWar.players.length; i++) {
             System.out.println(gameOfWar.players[i].getName() +
                     " plays " +
@@ -22,11 +22,11 @@ public class PrintGame {
         System.out.println("****WAR****");
     }
 
-    public void printWinnerOfRound(Player[] players, Player winner){
+    public static void printWinnerOfRound(Player[] players, Player winner){
         System.out.println(winner.getName() + " wins the round");
     }
 
-    public void printWinnerOfGame(GameOfWar gameOfWar){
+    public static void printWinnerOfGame(GameOfWar gameOfWar){
         Player winner = gameOfWar.pointSystem.determineWinner(gameOfWar.players);
         if(winner != null){
             System.out.println(winner.getName() + " WINS THE GAME!");
@@ -36,7 +36,7 @@ public class PrintGame {
         }
     }
 
-    public void printScore(Player[] players){
+    public static void printScore(Player[] players){
         for(int i = 0; i < players.length; i++){
             System.out.println(players[i].getName() + " has a score of " + 
             players[i].getPoints());

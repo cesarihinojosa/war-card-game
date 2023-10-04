@@ -8,8 +8,6 @@ import hw2.gameversions.GameOfWarVersionTwo;
 
 public class PlayGame {
 
-    static PrintGame printGame = new PrintGame();
-
     static private int gameVersion;
     static private int numOfRounds;
     static private int shuffleSeed;
@@ -24,8 +22,12 @@ public class PlayGame {
         createChainOfResponsibilites();
         chooseGameVersionBasedOnCommandArgs(gameVersion);
         assignCommandArgsToRemainingValues(args);
-        
+
         playEntireGame();
+    }
+
+    private static void assignCommandArgToGameVersion(String[] args){
+        gameVersion = Integer.parseInt(args[0]);
     }
 
     private static void createGameVersions(){
@@ -40,10 +42,6 @@ public class PlayGame {
 
     private static void chooseGameVersionBasedOnCommandArgs(int gameVersion){
         gameOfWar = gameOfWarVersionOne.handleGameOfWarVersion(gameVersion);
-    }
-
-    private static void assignCommandArgToGameVersion(String[] args){
-        gameVersion = Integer.parseInt(args[0]);
     }
 
     private static void assignCommandArgsToRemainingValues(String[] args){
@@ -64,7 +62,7 @@ public class PlayGame {
             Player winner = createPlayerObject();
             winner = playRound();
             if (winner == null) {
-                printGame.printCardsInPlayWar(gameOfWar);
+                PrintGame.printCardsInPlayWar(gameOfWar);
                 winner = playWar();
             }
             if (gameEnded(winner)) {
@@ -98,18 +96,18 @@ public class PlayGame {
     }
 
     private static void printGameInfo(Player winner) {
-        printGame.printCardsInPlay(gameOfWar);
-        printGame.printWinnerOfRound(gameOfWar.players, winner);
-        printGame.printScore(gameOfWar.players);
+        PrintGame.printCardsInPlay(gameOfWar);
+        PrintGame.printWinnerOfRound(gameOfWar.players, winner);
+        PrintGame.printScore(gameOfWar.players);
         System.out.println();
     }
 
     private static void printEndOfGameInfo() {
-        printGame.printCardsInPlay(gameOfWar);
+        PrintGame.printCardsInPlay(gameOfWar);
         System.out.println();
-        printGame.printWinnerOfGame(gameOfWar);
+        PrintGame.printWinnerOfGame(gameOfWar);
         System.out.println();
-        printGame.printScore(gameOfWar.players);
+        PrintGame.printScore(gameOfWar.players);
         System.out.println();
         System.out.println("seed: " + shuffleSeed);
     }
