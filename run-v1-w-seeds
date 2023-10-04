@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# $1 is game version
+# $2 is number of rounds
+# $3 is start seed
+# $4 is end seed
+# seed increment is 1
+
+for (( i=$3; i<=$4; i++ ))
+do 
+   java -cp target/cs4773-hw2-1.0-SNAPSHOT.jar hw2.WarGame $1 $2 $i
+done
+
