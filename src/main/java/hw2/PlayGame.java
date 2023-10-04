@@ -9,11 +9,19 @@ import hw2.gameversions.GameOfWarVersionTwo;
 public class PlayGame {
 
     static int numOfRounds = 200;// TODO: change this to depend on the command arguments
-    static GameOfWar gameOfWar = new GameOfWarVersionTwo();
     static PrintGame printGame = new PrintGame();
 
+    static GameOfWar gameOfWar;
+    static GameOfWar gameOfWarVersionOne;
+    static GameOfWar gameOfWarVersionTwo;
+
     public static void play(String[] args) {
-        String shuffleSeed = args[0];
+
+        createGameVersions();
+        createChainOfResponsibilites();
+        chooseGameVersionBasedOnCommandArgs(Integer.parseInt(args[0]));
+
+        String shuffleSeed = args[1];
         setupGame(Integer.parseInt(shuffleSeed));
 
         for (int i = 0; i < numOfRounds; i++) {
@@ -29,6 +37,21 @@ public class PlayGame {
             }
             printGameInfo(winner);
         }
+        System.out.println("seed: " + args[1]);
+    }
+
+    private static void createGameVersions(){
+        gameOfWarVersionOne = new GameOfWarVersionOne();
+        gameOfWarVersionTwo = new GameOfWarVersionTwo();
+    }
+
+    private static void createChainOfResponsibilites(){
+        gameOfWarVersionOne.setNextGameOfWar(gameOfWarVersionTwo);
+        gameOfWarVersionTwo.setNextGameOfWar(null);
+    }
+
+    private static void chooseGameVersionBasedOnCommandArgs(int gameVersion){
+        gameOfWar = gameOfWarVersionOne.handleGameOfWarVersion(gameVersion);
     }
 
     private static void setupGame(int shuffleSeed) {
@@ -60,7 +83,9 @@ public class PlayGame {
 
     private static void printEndOfGameInfo() {
         printGame.printCardsInPlay(gameOfWar);
+        System.out.println();
         printGame.printWinnerOfGame(gameOfWar);
+        System.out.println();
         printGame.printScore(gameOfWar.players);
         System.out.println();
     }

@@ -29,10 +29,10 @@ public class PrintGame {
     public void printWinnerOfGame(GameOfWar gameOfWar){
         Player winner = gameOfWar.pointSystem.determineWinner(gameOfWar.players);
         if(winner != null){
-            System.out.println(winner.getName() + " wins the game!");
+            System.out.println(winner.getName() + " WINS THE GAME!");
         }
         else{
-            System.out.println("tie!");
+            System.out.println("TIE!!");
         }
     }
 
@@ -42,7 +42,5 @@ public class PrintGame {
             players[i].getPoints());
         }
     }
-
-    //public void printResults
 
 }
