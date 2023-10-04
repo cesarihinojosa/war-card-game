@@ -8,7 +8,7 @@ public class PointSystemVersionTwo implements PointSystem{
     
     @Override
     public boolean gameEnded(Player[] players, Player winner) {
-        if(checkIfGameOver(players) || checkIfGameEndedInTie(winner)){
+        if(playersHaveNoMoreCards(players) || gameEndsInTie(winner)){
             return true;
         }
         else{
@@ -16,7 +16,7 @@ public class PointSystemVersionTwo implements PointSystem{
         }
     }
 
-    private boolean checkIfGameOver(Player[] players){
+    private boolean playersHaveNoMoreCards(Player[] players){
         for(int i = 0; i < players.length; i++){
             if(players[i].getPile().size() == 0){
                 return true;
@@ -25,7 +25,7 @@ public class PointSystemVersionTwo implements PointSystem{
         return false;
     }
 
-    private boolean checkIfGameEndedInTie(Player winner){
+    private boolean gameEndsInTie(Player winner){
         if(winner == null){
             return true;
         }

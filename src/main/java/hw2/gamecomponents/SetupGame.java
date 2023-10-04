@@ -4,6 +4,6 @@ import hw2.coreobjects.Player;
 
 public interface SetupGame {
     
-    public void setup(Player[] players);
+    public void setup(Player[] players, int shuffleSeed);
 
 }

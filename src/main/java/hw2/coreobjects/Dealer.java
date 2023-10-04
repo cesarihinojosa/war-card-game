@@ -21,12 +21,8 @@ public class Dealer {
         deck = Deck.getInstance();
     }
 
-    public void shuffleDeck(){
-        Random random = new Random();
-        for(int i = 0; i < deck.deckOfCards.size(); i++){
-            int randomInt = random.nextInt(deck.deckOfCards.size());
-            Collections.swap(deck.deckOfCards, i, randomInt);
-        }
+    public void shuffleDeck(int seed){
+        Collections.shuffle(deck.deckOfCards, new Random(seed));
     }
 
     public void dealCards(Player[] players, int numberOfPlayers){

@@ -16,7 +16,6 @@ public class GameRoundVersionOne implements GameRound{
         int highestCard = dealer.determineHighestCard(players);
         Player winner = dealer.determineWinner(players, highestCard);
         int numberOfWinners = dealer.countNumberOfWinners(players, highestCard);
-    
         if(numberOfWinners > 1){ //war
             return null;
         }

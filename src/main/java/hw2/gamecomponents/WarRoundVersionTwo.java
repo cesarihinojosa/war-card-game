@@ -55,18 +55,18 @@ public class WarRoundVersionTwo implements WarRound {
     }
 
     private boolean canPlayCards(Player[] players, int indexOfPlayer) {
-        for (int i = 0; i < NUMBER_OF_PLAYERS; i++) {
-            if (players[indexOfPlayer].getPile().size() < 1) {
-                return false;
-            }
+        if(players[indexOfPlayer].getPile().size() < 1){
+            return false;
         }
-        return true;
+        else{
+            return true;
+        }
     }
 
     private void checkIfplayersHaveNoMoreCards(Player[] players) {
-        if (players[0].getPile().size() == 0 &&
-                players[1].getPile().size() == 0) {
+        if (players[0].getPile().size() == 0){
             gameEndsInTie = true;
+            returnCardsToPlayers(players);
         }
     }
 
@@ -87,6 +87,12 @@ public class WarRoundVersionTwo implements WarRound {
     private void clearCardsInPlay(Player[] players) {// i feel should probalby be in Player
         for (int i = 0; i < players.length; i++) {
             players[i].clearCardsInPlay();
+        }
+    }
+
+    private void returnCardsToPlayers(Player[] players){
+        for (int i = 0; i < players.length; i++) {
+            players[i].addManyCardsToPile(players[i].getAllCardsInPlay());
         }
     }
 }

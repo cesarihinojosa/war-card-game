@@ -12,62 +12,57 @@ public class PlayGame {
     static GameOfWar gameOfWar = new GameOfWarVersionTwo();
     static PrintGame printGame = new PrintGame();
 
-    public static void play() {
-        setupGame();
+    public static void play(String[] args) {
+        String shuffleSeed = args[0];
+        setupGame(Integer.parseInt(shuffleSeed));
+
         for (int i = 0; i < numOfRounds; i++) {
             Player winner = createPlayerObject();
             winner = playRound();
             if (winner == null) {
+                printGame.printCardsInPlayWar(gameOfWar);
                 winner = playWar();
             }
-            if(gameEnded(winner)){
-                printStatus(winner);
+            if (gameEnded(winner)) {
+                printEndOfGameInfo();
                 break;
             }
-            printStatus(winner);
-            printScore();
+            printGameInfo(winner);
         }
-        printScore();
-        declareWinner();
     }
 
-    private static void setupGame(){
-        gameOfWar.setupGame.setup(gameOfWar.players);
+    private static void setupGame(int shuffleSeed) {
+        gameOfWar.setupGame.setup(gameOfWar.players, shuffleSeed);
     }
 
-    private static Player createPlayerObject(){
-        return new PlayerVersionOne();//change this to be variable
+    private static Player createPlayerObject() {
+        return new PlayerVersionOne();// change this to be variable
     }
 
-    private static Player playRound(){
+    private static Player playRound() {
         return gameOfWar.gameRound.playRound(gameOfWar.players);
     }
 
-    private static Player playWar(){
-        printGame.printCurrentStatusWar(gameOfWar);
+    private static Player playWar() {
         return gameOfWar.warRound.war(gameOfWar.players);
     }
 
-    private static void printStatus(Player winner){
-        printGame.printCurrentStatusNormal(gameOfWar, winner);
-    }
-
-    private static boolean gameEnded(Player winner){
+    private static boolean gameEnded(Player winner) {
         return gameOfWar.pointSystem.gameEnded(gameOfWar.players, winner);
     }
 
-    private static void declareWinner(){
-        Player winner = gameOfWar.pointSystem.determineWinner(gameOfWar.players);
-        if(winner != null){
-            System.out.println(winner.getName() + " wins!");
-        }
-        else{
-            System.out.println("tie!");
-        }
-        System.exit(0);
+    private static void printGameInfo(Player winner) {
+        printGame.printCardsInPlay(gameOfWar);
+        printGame.printWinnerOfRound(gameOfWar.players, winner);
+        printGame.printScore(gameOfWar.players);
+        System.out.println();
     }
 
-    private static void printScore(){
+    private static void printEndOfGameInfo() {
+        printGame.printCardsInPlay(gameOfWar);
+        printGame.printWinnerOfGame(gameOfWar);
         printGame.printScore(gameOfWar.players);
+        System.out.println();
     }
+
 }
