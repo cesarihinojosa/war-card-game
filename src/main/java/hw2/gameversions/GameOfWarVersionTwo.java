@@ -15,6 +15,7 @@ public class GameOfWarVersionTwo extends GameOfWar{
         gameRound = new GameRoundVersionOne();
         pointSystem = new PointSystemVersionTwo();
         warRound = new WarRoundVersionTwo();
+        limitOnRounds = false;
     }
 
     private void createPlayers(){

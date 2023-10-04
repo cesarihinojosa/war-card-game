@@ -8,36 +8,24 @@ import hw2.gameversions.GameOfWarVersionTwo;
 
 public class PlayGame {
 
-    static int numOfRounds = 200;// TODO: change this to depend on the command arguments
     static PrintGame printGame = new PrintGame();
+
+    static private int gameVersion;
+    static private int numOfRounds;
+    static private int shuffleSeed;
 
     static GameOfWar gameOfWar;
     static GameOfWar gameOfWarVersionOne;
     static GameOfWar gameOfWarVersionTwo;
 
     public static void play(String[] args) {
-
+        assignCommandArgToGameVersion(args);
         createGameVersions();
         createChainOfResponsibilites();
-        chooseGameVersionBasedOnCommandArgs(Integer.parseInt(args[0]));
-
-        String shuffleSeed = args[1];
-        setupGame(Integer.parseInt(shuffleSeed));
-
-        for (int i = 0; i < numOfRounds; i++) {
-            Player winner = createPlayerObject();
-            winner = playRound();
-            if (winner == null) {
-                printGame.printCardsInPlayWar(gameOfWar);
-                winner = playWar();
-            }
-            if (gameEnded(winner)) {
-                printEndOfGameInfo();
-                break;
-            }
-            printGameInfo(winner);
-        }
-        System.out.println("seed: " + args[1]);
+        chooseGameVersionBasedOnCommandArgs(gameVersion);
+        assignCommandArgsToRemainingValues(args);
+        
+        playEntireGame();
     }
 
     private static void createGameVersions(){
@@ -52,6 +40,41 @@ public class PlayGame {
 
     private static void chooseGameVersionBasedOnCommandArgs(int gameVersion){
         gameOfWar = gameOfWarVersionOne.handleGameOfWarVersion(gameVersion);
+    }
+
+    private static void assignCommandArgToGameVersion(String[] args){
+        gameVersion = Integer.parseInt(args[0]);
+    }
+
+    private static void assignCommandArgsToRemainingValues(String[] args){
+        if(gameOfWar.limitOnRounds == true){
+            numOfRounds = Integer.parseInt(args[1]);
+            shuffleSeed = Integer.parseInt(args[2]);
+        }
+        else{
+            shuffleSeed = Integer.parseInt(args[1]);
+        }
+    }
+
+    private static void playEntireGame(){
+        setupGame(shuffleSeed);
+        int i = 0;
+        while(i < numOfRounds || gameOfWar.limitOnRounds == false){
+
+            Player winner = createPlayerObject();
+            winner = playRound();
+            if (winner == null) {
+                printGame.printCardsInPlayWar(gameOfWar);
+                winner = playWar();
+            }
+            if (gameEnded(winner)) {
+                printEndOfGameInfo();
+                break;
+            }
+            printGameInfo(winner);
+            
+            i++;
+        }
     }
 
     private static void setupGame(int shuffleSeed) {
@@ -88,6 +111,7 @@ public class PlayGame {
         System.out.println();
         printGame.printScore(gameOfWar.players);
         System.out.println();
+        System.out.println("seed: " + shuffleSeed);
     }
 
 }
