@@ -4,6 +4,7 @@ import hw2.coreobjects.Player;
 import hw2.coreobjects.PlayerVersionOne;
 import hw2.gameversions.GameOfWar;
 import hw2.gameversions.GameOfWarVersionOne;
+import hw2.gameversions.GameOfWarVersionThree;
 import hw2.gameversions.GameOfWarVersionTwo;
 
 public class PlayGame {
@@ -15,6 +16,7 @@ public class PlayGame {
     static GameOfWar gameOfWar;
     static GameOfWar gameOfWarVersionOne;
     static GameOfWar gameOfWarVersionTwo;
+    static GameOfWar gameOfWarVersionThree;
 
     public static void play(String[] args) {
         assignCommandArgToGameVersion(args);
@@ -22,7 +24,6 @@ public class PlayGame {
         createChainOfResponsibilites();
         chooseGameVersionBasedOnCommandArgs(gameVersion);
         assignCommandArgsToRemainingValues(args);
-
         playEntireGame();
     }
 
@@ -33,11 +34,13 @@ public class PlayGame {
     private static void createGameVersions(){
         gameOfWarVersionOne = new GameOfWarVersionOne();
         gameOfWarVersionTwo = new GameOfWarVersionTwo();
+        gameOfWarVersionThree = new GameOfWarVersionThree();
     }
 
     private static void createChainOfResponsibilites(){
         gameOfWarVersionOne.setNextGameOfWar(gameOfWarVersionTwo);
-        gameOfWarVersionTwo.setNextGameOfWar(null);
+        gameOfWarVersionTwo.setNextGameOfWar(gameOfWarVersionThree);
+        gameOfWarVersionThree.setNextGameOfWar(null);
     }
 
     private static void chooseGameVersionBasedOnCommandArgs(int gameVersion){

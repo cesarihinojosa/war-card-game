@@ -3,8 +3,6 @@ package hw2.gamecomponents;
 import hw2.coreobjects.Player;
 
 public class PointSystemVersionTwo implements PointSystem{
-
-    final int NUMBER_OF_PLAYERS = 2;
     
     @Override
     public boolean gameEnded(Player[] players, Player winner) {
@@ -42,7 +40,7 @@ public class PointSystemVersionTwo implements PointSystem{
     private Player determinePlayerWithHighestPoints(Player[] players){
         int maxPoints = 0;
         Player winner = null;
-        for(int i = 0; i < NUMBER_OF_PLAYERS; i++){
+        for(int i = 0; i < players.length; i++){
             if(players[i].getPoints() > maxPoints){
                 maxPoints = players[i].getPoints();
                 winner = players[i];

@@ -8,10 +8,9 @@ public class WarRoundVersionTwo implements WarRound {
     Dealer dealer = Dealer.getInstance();
     boolean gameEndsInTie = false;
     final int NUMBER_OF_ADDITIONAL_CARDS = 3;
-    final int NUMBER_OF_PLAYERS = 2;
 
     /*
-     * This version of WarRound is hardcoded for 2 players and
+     * This version of WarRound is compatible with n players; n > 1
      * 3 additional cards during the war.
      */
     @Override
@@ -22,6 +21,7 @@ public class WarRoundVersionTwo implements WarRound {
         } while (tie(winner) && gameEndsInTie == false);
 
         if(winner == null){
+            clearCardsInPlay(players);
             return winner;
         }
         else{
@@ -47,14 +47,14 @@ public class WarRoundVersionTwo implements WarRound {
     private void playCards(Player[] players) {
         for (int i = 0; i < players.length; i++) {
             for (int j = 0; j < NUMBER_OF_ADDITIONAL_CARDS; j++) {
-                if (canPlayCards(players, i)) {
+                if (canPlayerPlayCards(players, i)) {
                     players[i].playCard();
                 }
             }
         }
     }
 
-    private boolean canPlayCards(Player[] players, int indexOfPlayer) {
+    private boolean canPlayerPlayCards(Player[] players, int indexOfPlayer) {
         if(players[indexOfPlayer].getPile().size() < 1){
             return false;
         }
@@ -84,7 +84,7 @@ public class WarRoundVersionTwo implements WarRound {
         }
     }
 
-    private void clearCardsInPlay(Player[] players) {// i feel should probalby be in Player
+    private void clearCardsInPlay(Player[] players) {
         for (int i = 0; i < players.length; i++) {
             players[i].clearCardsInPlay();
         }
