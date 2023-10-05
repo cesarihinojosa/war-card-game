@@ -58,11 +58,12 @@ public class PlayGame {
     }
 
     private static void playEntireGame(){
+        printStartOfGame();
         setupGame(shuffleSeed);
         int i = 0;
         while(i < numOfRounds || gameOfWar.limitOnRounds == false){
 
-            Player winner = createPlayerObject();
+            Player winner = new PlayerVersionOne(); 
             winner = playRound();
             if (winner == null) {
                 PrintGame.printCardsInPlayWar(gameOfWar);
@@ -78,12 +79,13 @@ public class PlayGame {
         }
     }
 
-    private static void setupGame(int shuffleSeed) {
-        gameOfWar.setupGame.setup(gameOfWar.players, shuffleSeed);
+    private static void printStartOfGame(){
+        System.out.println("------------WAR GAME------------");
+        System.out.println();
     }
 
-    private static Player createPlayerObject() {
-        return new PlayerVersionOne();// change this to be variable
+    private static void setupGame(int shuffleSeed) {
+        gameOfWar.setupGame.setup(gameOfWar.players, shuffleSeed);
     }
 
     private static Player playRound() {
@@ -112,7 +114,6 @@ public class PlayGame {
         System.out.println();
         PrintGame.printScore(gameOfWar.players);
         System.out.println();
-        System.out.println("seed: " + shuffleSeed);
     }
 
 }
