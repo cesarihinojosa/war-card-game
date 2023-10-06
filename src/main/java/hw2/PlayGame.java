@@ -2,6 +2,7 @@ package hw2;
 
 import hw2.coreobjects.Player;
 import hw2.coreobjects.PlayerVersionOne;
+import hw2.gamecomponents.PrintGame;
 import hw2.gameversions.GameOfWar;
 import hw2.gameversions.GameOfWarVersionOne;
 import hw2.gameversions.GameOfWarVersionThree;

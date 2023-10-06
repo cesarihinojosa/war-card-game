@@ -1,4 +1,4 @@
-package hw2;
+package hw2.gamecomponents;
 
 import hw2.coreobjects.Player;
 import hw2.gameversions.GameOfWar;

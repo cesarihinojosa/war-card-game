@@ -1,23 +1,24 @@
-Overall, I used composition to write this program. The Game of War is 
-built by 4 components: setting up the game, playing a round, playing a 
-round of war, and the point system. Different versions have their own 
-implementation for some of these, and also reuse components from other 
-versions when they can. This allows for code reuse and also, ease of 
-extension for future versions. 
+War Card Game Simulator
+Simulates a war game between computer players. Includes 3 versions of the game. Written in Java.
 
-The program itself follows the open/closed principle. This is mainly 
-achieved by using a chain of responsibility. The program allows for future 
-versions to be implemented and connected very easily. 
 
-I would say pretty much all the classes follow single responsibility. 
-There are 19 classes in this program. I tried to separate responsibility 
-as much as possible. 
+Running The Program
+With Maven and Java installed, inside the project directory, run the following commands: 
 
-I used polymorphism when creating GameOfWar objects, see ‘PlayGame.java’. 
-A GameOfWar object is being created, and at runtime, it’s decided which 
-child class is used. I avoided using switch statements, instead using 
-chain of responsibility and polymorphism. 
+	$ mvn package
+      Mac/Linux:
+	$ java -cp target/cs4773-hw2-1.0-SNAPSHOT.jar hw2.WarGame <arg1> <arg2> <arg3>
+      Windows:
+	$ java -cp target\cs4773-hw2-1.0-SNAPSHOT.jar hw2.WarGame <arg1> <arg2> <arg3>
+	
 
-By using interfaces for each of the 4 game components, and having each 
-GameOfWar version depend on these abstractions, this is an example of 
-dependency inversion. 
+Command Line Arguments
+First argument is version of game. There are 3 versions. 1, 2, and 3.
+
+If on version 1, second argument is number of rounds to play and third argument is shuffle seed. 
+
+If not on version 1, second argument is shuffle seed and there is no third argument. 
+
+
+Date: 10-05-2023
+Author: Cesar Hinojosa
