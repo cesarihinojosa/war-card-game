@@ -1,6 +1,6 @@
-package hw2.gamecomponents;
+package app.gamecomponents;
 
-import hw2.coreobjects.Player;
+import app.coreobjects.Player;
 
 public interface GameRound {
 

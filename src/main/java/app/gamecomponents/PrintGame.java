@@ -1,7 +1,7 @@
-package hw2.gamecomponents;
+package app.gamecomponents;
 
-import hw2.coreobjects.Player;
-import hw2.gameversions.GameOfWar;
+import app.coreobjects.Player;
+import app.gameversions.GameOfWar;
 
 public class PrintGame {
 

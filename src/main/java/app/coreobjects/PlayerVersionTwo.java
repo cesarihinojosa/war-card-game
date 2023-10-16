@@ -1,4 +1,4 @@
-package hw2.coreobjects;
+package app.coreobjects;
 
 import java.util.ArrayList;
 import java.util.List;

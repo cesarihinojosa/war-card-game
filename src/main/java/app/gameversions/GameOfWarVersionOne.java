@@ -1,11 +1,11 @@
-package hw2.gameversions;
+package app.gameversions;
 
-import hw2.coreobjects.Player;
-import hw2.coreobjects.PlayerVersionOne;
-import hw2.gamecomponents.GameRoundVersionOne;
-import hw2.gamecomponents.PointSystemVersionOne;
-import hw2.gamecomponents.SetupGameVersionOne;
-import hw2.gamecomponents.WarRoundVersionOne;
+import app.coreobjects.Player;
+import app.coreobjects.PlayerVersionOne;
+import app.gamecomponents.GameRoundVersionOne;
+import app.gamecomponents.PointSystemVersionOne;
+import app.gamecomponents.SetupGameVersionOne;
+import app.gamecomponents.WarRoundVersionOne;
 
 public class GameOfWarVersionOne extends GameOfWar{
     

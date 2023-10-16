@@ -1,10 +1,10 @@
-package hw2.coreobjects;
+package app.coreobjects;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import hw2.coreobjects.Card.Rank;
-import hw2.coreobjects.Card.Suit;
+import app.coreobjects.Card.Rank;
+import app.coreobjects.Card.Suit;
 
 public class Deck {
 

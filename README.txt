@@ -7,9 +7,9 @@ With Maven and Java installed, inside the project directory, run the following c
 
 	$ mvn package
       Mac/Linux:
-	$ java -cp target/cs4773-hw2-1.0-SNAPSHOT.jar hw2.WarGame <arg1> <arg2> <arg3>
+	$ java -cp target/war-1.0-SNAPSHOT.jar app.WarGame <arg1> <arg2> <arg3>
       Windows:
-	$ java -cp target\cs4773-hw2-1.0-SNAPSHOT.jar hw2.WarGame <arg1> <arg2> <arg3>
+	$ java -cp target\war-1.0-SNAPSHOT.jar app.WarGame <arg1> <arg2> <arg3>
 	
 
 Command Line Arguments

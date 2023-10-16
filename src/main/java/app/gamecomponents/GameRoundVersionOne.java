@@ -1,7 +1,7 @@
-package hw2.gamecomponents;
+package app.gamecomponents;
 
-import hw2.coreobjects.Dealer;
-import hw2.coreobjects.Player;
+import app.coreobjects.Dealer;
+import app.coreobjects.Player;
 
 public class GameRoundVersionOne implements GameRound{
 
@@ -10,7 +10,7 @@ public class GameRoundVersionOne implements GameRound{
     /*
      * Can be played with n number of players. n >= 2. 
      */
-    @Override
+
     public Player playRound(Player[] players){
         playCards(players);
         int highestCard = dealer.determineHighestCard(players);

@@ -1,15 +1,15 @@
-package hw2.gameversions;
+package app.gameversions;
 
-import hw2.coreobjects.Player;
-import hw2.coreobjects.PlayerVersionTwo;
-import hw2.gamecomponents.GameRoundVersionOne;
-import hw2.gamecomponents.PointSystemVersionTwo;
-import hw2.gamecomponents.SetupGameVersionOne;
-import hw2.gamecomponents.WarRoundVersionTwo;
+import app.coreobjects.Player;
+import app.coreobjects.PlayerVersionTwo;
+import app.gamecomponents.GameRoundVersionOne;
+import app.gamecomponents.PointSystemVersionTwo;
+import app.gamecomponents.SetupGameVersionOne;
+import app.gamecomponents.WarRoundVersionTwo;
 
-public class GameOfWarVersionThree extends GameOfWar {
-
-    public GameOfWarVersionThree() {
+public class GameOfWarVersionTwo extends GameOfWar{
+    
+    public GameOfWarVersionTwo(){
         createPlayers();
         setupGame = new SetupGameVersionOne();
         gameRound = new GameRoundVersionOne();
@@ -18,17 +18,14 @@ public class GameOfWarVersionThree extends GameOfWar {
         limitOnRounds = false;
     }
 
-    private void createPlayers() {
+    private void createPlayers(){
         Player playerOne = new PlayerVersionTwo();
         Player playerTwo = new PlayerVersionTwo();
-        Player playerThree = new PlayerVersionTwo();
         playerOne.setName("Player 1");
         playerTwo.setName("Player 2");
-        playerThree.setName("Player 3");
-        players = new Player[3];
+        players = new Player[2];
         players[0] = playerOne;
         players[1] = playerTwo;
-        players[2] = playerThree;
     }
 
     @Override
@@ -38,9 +35,10 @@ public class GameOfWarVersionThree extends GameOfWar {
 
     @Override
     public GameOfWar handleGameOfWarVersion(int gameOfWarVersion) {
-        if (gameOfWarVersion == 3) {
+        if(gameOfWarVersion == 2){
             return this;
-        } else {
+        }
+        else{
             return nextGameOfWar.handleGameOfWarVersion(gameOfWarVersion);
         }
     }

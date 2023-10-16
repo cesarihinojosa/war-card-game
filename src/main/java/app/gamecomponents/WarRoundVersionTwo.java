@@ -1,7 +1,7 @@
-package hw2.gamecomponents;
+package app.gamecomponents;
 
-import hw2.coreobjects.Dealer;
-import hw2.coreobjects.Player;
+import app.coreobjects.Dealer;
+import app.coreobjects.Player;
 
 public class WarRoundVersionTwo implements WarRound {
 
@@ -13,7 +13,6 @@ public class WarRoundVersionTwo implements WarRound {
      * This version of WarRound is compatible with n players; n > 1
      * 3 additional cards during the war.
      */
-    @Override
     public Player war(Player[] players) {
         Player winner;
         do {

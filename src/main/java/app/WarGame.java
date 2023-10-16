@@ -1,4 +1,4 @@
-package hw2;
+package app;
 
 /*
  * @author Cesar Hinojosa

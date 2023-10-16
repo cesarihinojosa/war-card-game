@@ -1,10 +1,10 @@
-package hw2.gameversions;
+package app.gameversions;
 
-import hw2.coreobjects.Player;
-import hw2.gamecomponents.GameRound;
-import hw2.gamecomponents.PointSystem;
-import hw2.gamecomponents.SetupGame;
-import hw2.gamecomponents.WarRound;
+import app.coreobjects.Player;
+import app.gamecomponents.GameRound;
+import app.gamecomponents.PointSystem;
+import app.gamecomponents.SetupGame;
+import app.gamecomponents.WarRound;
 
 public abstract class GameOfWar {
 

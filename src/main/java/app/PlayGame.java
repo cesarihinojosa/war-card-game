@@ -1,12 +1,12 @@
-package hw2;
+package app;
 
-import hw2.coreobjects.Player;
-import hw2.coreobjects.PlayerVersionOne;
-import hw2.gamecomponents.PrintGame;
-import hw2.gameversions.GameOfWar;
-import hw2.gameversions.GameOfWarVersionOne;
-import hw2.gameversions.GameOfWarVersionThree;
-import hw2.gameversions.GameOfWarVersionTwo;
+import app.coreobjects.Player;
+import app.coreobjects.PlayerVersionOne;
+import app.gamecomponents.PrintGame;
+import app.gameversions.GameOfWar;
+import app.gameversions.GameOfWarVersionOne;
+import app.gameversions.GameOfWarVersionThree;
+import app.gameversions.GameOfWarVersionTwo;
 
 public class PlayGame {
 

@@ -1,10 +1,9 @@
-package hw2.gamecomponents;
+package app.gamecomponents;
 
-import hw2.coreobjects.Player;
+import app.coreobjects.Player;
 
 public class PointSystemVersionTwo implements PointSystem{
     
-    @Override
     public boolean gameEnded(Player[] players, Player winner) {
         if(playersHaveNoMoreCards(players) || gameEndsInTie(winner)){
             return true;
@@ -30,7 +29,6 @@ public class PointSystemVersionTwo implements PointSystem{
         return false;
     }
 
-    @Override
     public Player determineWinner(Player[] players) {
         Player winner = null;
         winner = determinePlayerWithHighestPoints(players);
